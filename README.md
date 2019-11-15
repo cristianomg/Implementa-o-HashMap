@@ -1,10 +1,10 @@
-# Implementa-o-HashMap
+# Implementação do HashMap
+
 ## Implementação da estrutura de dados HashMap e utilização da mesma em um sistema de cadastro de turmas e alunos
 
+Implemente em Java um programa para controlar as turmas de um cursinho. O sistema é composto por uma Tabela Hash que armazena as turmas, onde, para cada turma, temos uma estrutura de dados para armazenar os alunos e outra para armazenar a fila de espera. Além disto, o sistema usa outra estrutura para armazenar o cadastro dos alunos.
 
-<p>Implemente em Java um programa para controlar as turmas de um cursinho. O sistema é composto por uma Tabela Hash que armazena as turmas, onde, para cada turma, temos uma estrutura de dados para armazenar os alunos e outra para armazenar a fila de espera. Além disto, o sistema usa outra estrutura para armazenar o cadastro dos alunos.<p>
-<p>O Programa deverá permitir:<p>
-
+O Programa deverá permitir:
 
 1. Cadastrar turmas
 2. Cadastrar aluno
@@ -13,9 +13,8 @@
 5. Cancelar turma
 6. Listar alunos na turma
 7. Listar turmas
-<p>
+
 Observações:
-<p>
 
 
 1. Para cadastrar turmas deverá ser solicitado o código da turma e o número máximo de
