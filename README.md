@@ -16,18 +16,20 @@
 <p>
 Observações:
 <p>
+
+
 1. Para cadastrar turmas deverá ser solicitado o código da turma e o número máximo de
-alunos;
+alunos
 2. Para efetuar uma matrícula deverá ser solicitado o código da turma e o RG do aluno. Se
 a turma estiver cheia, a pessoa vai para a fila de espera, caso contrário a pessoa é inserida
 na lista de alunos. Após efetuar a reserva do aluno, informe se ele foi para a fila de espera
-ou não;
+ou não
 3. Para cancelar uma matrícula deverá ser solicitado o código da turma e o RG do aluno. A
 pessoa deverá ser removida da lista de alunos e, se a fila de espera não estiver vazia, o
-primeiro aluno da fila ocupa automaticamente a vaga liberada;
+primeiro aluno da fila ocupa automaticamente a vaga liberada
 4. Para cancelar uma turma deverá ser solicitado o código da turma. A turma deverá ser
-removida da lista assim como todos os seus alunos;
+removida da lista assim como todos os seus alunos
 5. Na listagem dos alunos deverá ser solicitado o código da turma e impresso o nome de
-todos os alunos dessa turma (não entra os que estão na fila de espera):
+todos os alunos dessa turma (não entra os que estão na fila de espera)
 6. Na listagem das turmas deverá ser impresso um relatório com o seguinte cabeçalho:
 código da turma, número de vagas, número de alunos e tamanho da fila de espera.
