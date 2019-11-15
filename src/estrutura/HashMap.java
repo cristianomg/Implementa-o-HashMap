@@ -1,6 +1,8 @@
 package estrutura;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import estrutura.Interfaces.IHash;
 import estrutura.ListaDuplamenteEncadeada.classes.ListaDuplamenteEncadeada;
@@ -8,6 +10,7 @@ import estrutura.ListaDuplamenteEncadeada.classes.ListaDuplamenteEncadeada;
 public class HashMap<K, V> implements IHash<K, V>{
 	
 	private ListaDuplamenteEncadeada<Elemento> elementos[];
+	private List<V> valores = new ArrayList();
 	private int itensAdicionados = 0;
 	private int tamanhoVetor;
 	
@@ -30,14 +33,25 @@ public class HashMap<K, V> implements IHash<K, V>{
 	@Override
 	public void inserir(K chave, V valor) {
 		realocarMaior();
-		int hashKey = chave.hashCode()%tamanhoVetor;
+	    int hashKey;
+		if (chave.hashCode() < 0) {
+			hashKey = (chave.hashCode()%tamanhoVetor)*(-1);			
+		}else {
+			hashKey = (chave.hashCode()%tamanhoVetor);
+		}
 		elementos[hashKey].adicionar(new Elemento<K, V>(chave, valor));
+		valores.add(valor);
 		itensAdicionados++;
 	}
 
 	@Override
 	public V obter(K chave) {
-		int hashKey = chave.hashCode()%tamanhoVetor;
+		int hashKey;
+		if (chave.hashCode() < 0) {
+			hashKey = (chave.hashCode()%tamanhoVetor)*(-1);			
+		}else {
+			hashKey = (chave.hashCode()%tamanhoVetor);
+		}
 		ListaDuplamenteEncadeada<Elemento> item = elementos[hashKey];
 		if (item.tamanho() > 0){
 			for(Elemento elemento : elementos[hashKey]) {
@@ -49,25 +63,35 @@ public class HashMap<K, V> implements IHash<K, V>{
 
 	@Override
 	public V remover(K chave) {
-		int hashKey = chave.hashCode()%tamanhoVetor;
+		int hashKey;
+		if (chave.hashCode() < 0) {
+			hashKey = (chave.hashCode()%tamanhoVetor)*(-1);			
+		}else {
+			hashKey = (chave.hashCode()%tamanhoVetor);
+		}
 		ListaDuplamenteEncadeada<Elemento> item = elementos[hashKey];
 		V element = null;
 		if (item.tamanho() > 0){
 			for(Elemento elemento : elementos[hashKey]) {
-				if (elemento.getKey() == chave) {
+				if (elemento.getKey().equals(chave)) {
 					element = (V) elemento.getValue();
-					elementos[hashKey] = new ListaDuplamenteEncadeada<Elemento>();
-					itensAdicionados --;
-					return element;
+					int posicao = elementos[hashKey].existe(elemento);
+					elementos[hashKey].remover(posicao);
+					valores.remove(element);
 				}
 			}
 		}
-		return null;
+		return element;
 	}
 
 	@Override
 	public boolean existe(K chave) {
-		int hashKey = chave.hashCode()%tamanhoVetor;
+		int hashKey;
+		if (chave.hashCode() < 0) {
+			hashKey = (chave.hashCode()%tamanhoVetor)*(-1);			
+		}else {
+			hashKey = (chave.hashCode()%tamanhoVetor);
+		}
 		ListaDuplamenteEncadeada<Elemento> item = elementos[hashKey];
 		if (item.tamanho() > 0){
 			for(Elemento elemento : elementos[hashKey]) {
@@ -114,12 +138,21 @@ public class HashMap<K, V> implements IHash<K, V>{
 			for (int i = 0; i< elementos.length; i++) {
 				if(elementos[i].tamanho() > 0) {
 					for (Elemento x : elementos[i]) {
-						int hashKey = x.getKey().hashCode()%tamanhoVetor;
+						int hashKey;
+						if (x.getKey().hashCode() < 0) {
+							hashKey = (x.getKey().hashCode()%tamanhoVetor)*(-1);			
+						}else {
+							hashKey = (x.getKey().hashCode()%tamanhoVetor);
+						}
 						varElementos[hashKey].adicionar(x);
 					}
 				}
 			}
+			elementos = varElementos;
 		}
+	}
+	public List<V> getListaValores(){
+		return valores;
 	}
 	
 	

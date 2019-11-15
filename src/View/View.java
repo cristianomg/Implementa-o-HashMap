@@ -38,6 +38,7 @@ public class View {
 				break;
 			case 6:
 				controller.listarAlunosTurma();
+				break;
 			case 7:
 				run = false;
 				break;
